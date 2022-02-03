@@ -1,15 +1,8 @@
 import React from "react";
-import Footer from "../footer";
-import Header from "../header";
+import { StyledMain } from "./styled";
 
 const Layout = ({ children }) => {
-	return (
-		<>
-			<Header />
-			<main>{children}</main>
-			<Footer />
-		</>
-	);
+	return <StyledMain>{children}</StyledMain>;
 };
 
 export default Layout;
