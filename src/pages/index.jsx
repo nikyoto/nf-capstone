@@ -8,7 +8,7 @@ import ExtendedLogo from "../molecules/extended-logo";
 import { StyledAppBackground, StyledFieldset } from "../ions/styles";
 
 const Page = () => {
-	const { data, loading, error } = useGet("/api/hello");
+	const { loading, error } = useGet("/api/hello");
 	const [value, setValue] = useState("");
 	const [name, setName] = useState("");
 
