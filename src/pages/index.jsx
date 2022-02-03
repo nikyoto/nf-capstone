@@ -41,7 +41,7 @@ const Page = () => {
 						<Button type="submit">Start Lobby</Button>
 					</StyledFieldset>
 				</form>
-				{name ? <h2>Welcome {name}</h2> : <h2></h2>}
+				{name ? <h2>Welcome {name}</h2> : <div />}
 			</StyledAppBackground>
 		</Layout>
 	);
