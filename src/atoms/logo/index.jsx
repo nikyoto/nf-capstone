@@ -4,12 +4,10 @@ import { StyledLogo } from "./styled";
 
 export const Logo = ({ ...props }) => {
 	return (
-		<div>
-			<StyledLogo
-				src={logo}
-				alt="This image shows an owl which is the logo for Hoo!"
-				{...props}
-			/>
-		</div>
+		<StyledLogo
+			src={logo}
+			alt="This image shows an owl which is the logo for Hoo!"
+			{...props}
+		/>
 	);
 };
