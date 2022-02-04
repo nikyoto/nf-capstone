@@ -2,15 +2,26 @@ import { StyledFieldset } from "../../ions/styles";
 import Input from "../../atoms/input";
 import Button from "../../atoms/button";
 import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Form = () => {
 	const [value, setValue] = useState("");
-	const [name, setName] = useState("");
+	const router = useRouter();
+	const handleSubmit = () => {
+		router.push({
+			pathname: "/lobby/123",
+		});
+	};
+
+	//console.log(router);
+	//return null;
+
 	return (
 		<form
 			onSubmit={event_ => {
 				event_.preventDefault();
-				setName(value);
+				handleSubmit();
 			}}
 		>
 			<StyledFieldset>
@@ -26,7 +37,6 @@ const Form = () => {
 				/>
 				<Button type="submit">Start Lobby</Button>
 			</StyledFieldset>
-			{name ? <h2>Welcome {name}</h2> : null}
 		</form>
 	);
 };
