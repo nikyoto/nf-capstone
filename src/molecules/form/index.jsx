@@ -16,9 +16,6 @@ const Form = () => {
 		});
 	};
 
-	//console.log(router);
-	//return null;
-
 	return (
 		<form
 			onSubmit={event_ => {
@@ -26,7 +23,6 @@ const Form = () => {
 				handleSubmit();
 			}}
 		>
-			<h1>{name} Test</h1>
 			<StyledFieldset>
 				<Input
 					type="text"
