@@ -11,7 +11,7 @@ const Page = () => {
 	return (
 		<>
 			<h1>Lobby: {id}</h1>
-			<h2>{name}</h2>
+			<h2>Hello {name}</h2>
 		</>
 	);
 };
