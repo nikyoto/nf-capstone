@@ -4,7 +4,7 @@ import { StyledMarks } from "../../atoms/logo-marks/styled";
 import { StyledLogoDiv } from "./styled";
 import { Logo } from "../../atoms/logo";
 
-const ExtendedLogo = ({ ...props }) => {
+export const ExtendedLogo = ({ ...props }) => {
 	return (
 		<StyledLogoDiv>
 			<Logo {...props} />
@@ -14,5 +14,3 @@ const ExtendedLogo = ({ ...props }) => {
 		</StyledLogoDiv>
 	);
 };
-
-export default ExtendedLogo;

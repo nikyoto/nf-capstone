@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Layout from "../organisms/layout";
-import ExtendedLogo from "../molecules/extended-logo";
+import { ExtendedLogo } from "../molecules/extended-logo";
 import { StyledAppBackground } from "../ions/styles";
 import Form from "../molecules/form";
 
