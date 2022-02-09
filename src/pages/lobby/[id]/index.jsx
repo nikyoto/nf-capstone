@@ -1,6 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
 import useStore from "../../../ions/useStore";
+import { SmallLogo } from "../../../molecules/small-logo";
+import Button from "../../../atoms/button";
+import { CopyLink } from "../../../molecules/copy-link";
 
 const Page = () => {
 	const name = useStore(state => state.name);
@@ -10,8 +13,10 @@ const Page = () => {
 
 	return (
 		<>
-			<h1>Lobby: {id}</h1>
+			<SmallLogo />
+			<CopyLink value={id} />
 			<h2>Hello {name}</h2>
+			<Button>Start</Button>
 		</>
 	);
 };
