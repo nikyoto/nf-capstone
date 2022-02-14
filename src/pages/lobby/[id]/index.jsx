@@ -5,7 +5,7 @@ import { SmallLogo } from "../../../molecules/small-logo";
 import Button from "../../../atoms/button";
 import { CopyLink } from "../../../molecules/copy-link";
 import { PlayerOverview } from "../../../molecules/player-overview";
-import { StyledAppBackground, StyledFieldset } from "../../../ions/styles";
+import { StyledFieldset } from "../../../ions/styles";
 
 const Page = () => {
 	const name = useStore(state => state.name);
