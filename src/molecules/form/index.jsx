@@ -10,9 +10,14 @@ const Form = () => {
 	const name = useStore(state => state.name);
 	const setName = useStore(state => state.setName);
 	const router = useRouter();
+
+	const randomNumber = max => {
+		return Math.floor(Math.random() * max);
+	};
+
 	const handleSubmit = () => {
 		router.push({
-			pathname: "/lobby/195",
+			pathname: "/lobby/" + randomNumber(999999999999),
 		});
 	};
 

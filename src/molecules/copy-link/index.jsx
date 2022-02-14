@@ -14,7 +14,7 @@ export const CopyLink = ({ value, ...props }) => {
 			<CopyToClipboard
 				copied={copied}
 				onClick={() => {
-					copy(value);
+					copy("/lobby/" + value);
 					setCopied(true);
 					setTimeout(() => {
 						setCopied(false);

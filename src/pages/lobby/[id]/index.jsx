@@ -4,6 +4,8 @@ import useStore from "../../../ions/useStore";
 import { SmallLogo } from "../../../molecules/small-logo";
 import Button from "../../../atoms/button";
 import { CopyLink } from "../../../molecules/copy-link";
+import { PlayerOverview } from "../../../molecules/player-overview";
+import { StyledFieldset } from "../../../ions/styles";
 
 const Page = () => {
 	const name = useStore(state => state.name);
@@ -15,8 +17,10 @@ const Page = () => {
 		<>
 			<SmallLogo />
 			<CopyLink value={id} />
-			<h2>Hello {name}</h2>
-			<Button>Start</Button>
+			<PlayerOverview>{name}</PlayerOverview>
+			<StyledFieldset>
+				<Button>Start Game</Button>
+			</StyledFieldset>
 		</>
 	);
 };
