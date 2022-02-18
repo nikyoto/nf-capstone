@@ -6,23 +6,33 @@ import Button from "../../../atoms/button";
 import { CopyLink } from "../../../molecules/copy-link";
 import { PlayerOverview } from "../../../molecules/player-overview";
 import { StyledFieldset } from "../../../ions/styles";
+import Form from "../../../molecules/form/join";
 
 const Page = () => {
 	const name = useStore(state => state.name);
 	const {
-		query: { id },
+		query: { channel },
 	} = useRouter();
 
-	return (
-		<>
-			<SmallLogo />
-			<CopyLink value={id} />
-			<PlayerOverview>{name}</PlayerOverview>
-			<StyledFieldset>
-				<Button>Start Game</Button>
-			</StyledFieldset>
-		</>
-	);
+	if (name) {
+		return (
+			<>
+				<SmallLogo />
+				<CopyLink value={channel} />
+				<PlayerOverview>{name}</PlayerOverview>
+				<StyledFieldset>
+					<Button>Start Game</Button>
+				</StyledFieldset>
+			</>
+		);
+	}
+	return <Form />;
 };
 
 export default Page;
+
+export const getServerSideProps = () => {
+	return {
+		props: {},
+	};
+};
