@@ -2,32 +2,24 @@ import { StyledFieldset } from "../../ions/styles";
 import Input from "../../atoms/input";
 import Button from "../../atoms/button";
 import React, { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import useStore from "../../ions/useStore";
+import { v4 as uuid } from "uuid";
 
 const Form = () => {
 	const name = useStore(state => state.name);
 	const setName = useStore(state => state.setName);
 	const router = useRouter();
 
-	const randomNumber = max => {
-		return Math.floor(Math.random() * max);
-	};
-
-	const handleSubmit = () => {
-		router.push({
-			pathname: "/lobby/" + randomNumber(999999999999),
+	const handleSubmit = event_ => {
+		event_.preventDefault();
+		void router.push({
+			pathname: `/lobby/${uuid()}`,
 		});
 	};
 
 	return (
-		<form
-			onSubmit={event_ => {
-				event_.preventDefault();
-				handleSubmit();
-			}}
-		>
+		<form onSubmit={handleSubmit}>
 			<StyledFieldset>
 				<Input
 					type="text"

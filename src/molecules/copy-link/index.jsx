@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import { TextField } from "../../atoms/textfield";
+import { PseudoTextField } from "../../atoms/pseudo-textfield";
 import { CopyToClipboard } from "../../atoms/copy-to-clipboard";
 import { StyledCopyLink } from "./styled";
 import { useCopyToClipboard } from "../../ions/hooks/copy-to-clipboard";
 
-export const CopyLink = ({ value, ...props }) => {
+export const CopyLink = ({ value }) => {
 	const { copy } = useCopyToClipboard();
 	const [copied, setCopied] = useState(false);
+	const link = `/lobby/${value}`;
 
 	return (
 		<StyledCopyLink>
-			<TextField value={value} {...props} />
+			<PseudoTextField>{link}</PseudoTextField>
 			<CopyToClipboard
 				copied={copied}
 				onClick={() => {
-					copy("/lobby/" + value);
+					copy(`${window.location.origin}${link}`);
 					setCopied(true);
 					setTimeout(() => {
 						setCopied(false);
