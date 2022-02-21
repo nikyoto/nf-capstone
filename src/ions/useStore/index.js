@@ -31,7 +31,7 @@ const useStore = create(set => {
 		removePlayer: uuid => {
 			set(
 				produce(draft => {
-					const index = draft.players.findIndex(player => uuid === player.uuid);
+					const index = draft.players.findIndex(player => uuid === player.id);
 					if (index >= 0) {
 						draft.players.splice(index, 1);
 					}

@@ -9,13 +9,11 @@ export const PlayerOverview = () => {
 	return (
 		<StyledPlayerOverview>
 			{players.map(player => {
-				const isLeader = player.isLeader ?? false;
-				const name = player.name ?? "Guest";
-				switch (isLeader) {
+				switch (player.isLeader) {
 					case true:
-						return <Leader key={player.id}>{name}</Leader>;
+						return <Leader key={player.id}>{player.name}</Leader>;
 					default:
-						return <Player key={player.id}>{name}</Player>;
+						return <Player key={player.id}>{player.name}</Player>;
 				}
 			})}
 		</StyledPlayerOverview>

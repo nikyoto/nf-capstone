@@ -11,31 +11,17 @@ import { PlayerOverview } from "../../../molecules/player-overview";
 import { SmallLogo } from "../../../molecules/small-logo";
 
 const Page = () => {
-	const joined = useStore(state => state.joined);
-	const { query } = useRouter();
-	const router = useRouter();
+	const {
+		query: { channel },
+		push,
+	} = useRouter();
 	const channels = useStore(state => state.channels);
-	const handleMessage = useCallback(() => {
-		console.log("Message received");
-	}, []);
-
-	const channel = query.channel;
+	const joined = useStore(state => state.joined);
+	const setJoined = useStore(state => state.setJoined);
 	const pubnub = usePubNub();
 
-	useEffect(() => {
-		const { setChannels } = useStore.getState();
-		setChannels([channel]);
-	}, [channel]);
+	/* Callbacks */
 
-	/*const sendMessage = useCallback(
-		message => {
-			if (message) {
-				return pubnub.publish({ channel, message });
-			}
-			return Promise.reject(new Error("Please provide a valid message."));
-		},
-		[pubnub, channel]
-	);*/
 	const handlePresence = useCallback(event_ => {
 		const { addPlayer, removePlayer } = useStore.getState();
 		switch (event_.action) {
@@ -54,8 +40,16 @@ const Page = () => {
 				break;
 		}
 	}, []);
+
+	/* Side Effects */
+
 	useEffect(() => {
-		const listeners = { message: handleMessage, presence: handlePresence };
+		const { setChannels } = useStore.getState();
+		setChannels([channel]);
+	}, [channel]);
+
+	useEffect(() => {
+		const listeners = { presence: handlePresence };
 		pubnub.addListener(listeners);
 		pubnub.subscribe({ channels, withPresence: true });
 
@@ -63,20 +57,23 @@ const Page = () => {
 			pubnub.unsubscribe({ channels });
 			pubnub.removeListener(listeners);
 		};
-	}, [pubnub, channels, handleMessage, handlePresence]);
+	}, [pubnub, channels, handlePresence]);
 
 	useEffect(() => {
 		const { setPlayers } = useStore.getState();
 		if (pubnub && channels.length > 0) {
 			pubnub.hereNow({ channels, includeState: true, includeUUIDs: true }).then(response => {
-				console.log(response);
 				const { occupants } = response.channels[channels[0]];
-				console.log(occupants);
 				setPlayers(
-					occupants.map(occupant => ({
-						name: occupant.state?.name ?? "Guest!!",
-						id: occupant.uuid,
-					}))
+					occupants
+						.filter(occupant => {
+							return Boolean(occupant.state?.name);
+						})
+						.map(occupant => ({
+							name: occupant.state.name,
+							isLeader: occupant.state.isLeader,
+							id: occupant.uuid,
+						}))
 				);
 			});
 		}
@@ -92,13 +89,15 @@ const Page = () => {
 					<Button
 						onClick={() => {
 							console.log("Leaving...");
+							pubnub.unsubscribe({ channels });
+							setJoined(false);
 						}}
 					>
 						Leave Lobby
 					</Button>
 					<Button
 						onClick={() => {
-							void router.push({
+							void push({
 								pathname: `/lobby/${uuid()}/question`,
 							});
 						}}
