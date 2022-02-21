@@ -1,12 +1,42 @@
+import produce from "immer";
 import create from "zustand";
 
 const useStore = create(set => {
 	return {
-		name: "",
-		setName: name => {
+		joined: false,
+		setJoined: joined => {
 			set(() => ({
-				name: name,
+				joined,
 			}));
+		},
+		channels: [],
+		setChannels: channels => {
+			set({
+				channels,
+			});
+		},
+		players: [],
+		addPlayer: player => {
+			set(
+				produce(draft => {
+					draft.players.push(player);
+				})
+			);
+		},
+		setPlayers: players => {
+			set({
+				players,
+			});
+		},
+		removePlayer: uuid => {
+			set(
+				produce(draft => {
+					const index = draft.players.findIndex(player => uuid === player.uuid);
+					if (index >= 0) {
+						draft.players.splice(index, 1);
+					}
+				})
+			);
 		},
 	};
 });

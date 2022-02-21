@@ -1,18 +1,28 @@
-import { StyledAppBackground, StyledFieldset } from "../../ions/styles";
-import Input from "../../atoms/input";
-import Button from "../../atoms/button";
+import { usePubNub } from "pubnub-react";
 import React, { useState } from "react";
+import Button from "../../atoms/button";
+import Input from "../../atoms/input";
+import { StyledAppBackground, StyledFieldset } from "../../ions/styles";
 import useStore from "../../ions/useStore";
 import { ExtendedLogo } from "../extended-logo";
 
 const Form = () => {
 	const [value, setValue] = useState("");
-	const setName = useStore(state => state.setName);
+	const channels = useStore(state => state.channels);
+	const setJoined = useStore(state => state.setJoined);
+	const pubnub = usePubNub();
 
-	const handleSubmit = event_ => {
+	const handleSubmit = async event_ => {
 		event_.preventDefault();
 		console.log("Joining lobby..", value);
-		setName(value);
+		await pubnub.setState({
+			channels,
+			state: {
+				name: value,
+				isLeader: false,
+			},
+		});
+		setJoined(true);
 	};
 
 	return (

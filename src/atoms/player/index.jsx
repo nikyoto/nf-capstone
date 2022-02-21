@@ -1,7 +1,7 @@
 import React from "react";
-import { StyledDeleteContainer, StyledPlayer, StyledPlayerName } from "./styled";
-import { StyledPlayerDelete } from "../player-delete/styled";
 import Icon from "../icon";
+import { StyledPlayerDelete } from "../player-delete/styled";
+import { StyledDeleteContainer, StyledPlayer, StyledPlayerName } from "./styled";
 
 export const Player = ({ children }) => {
 	return (

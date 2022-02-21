@@ -1,6 +1,6 @@
 import React from "react";
-import { StyledCopyButton } from "./styled";
 import Icon from "../icon";
+import { StyledCopyButton } from "./styled";
 
 export const CopyToClipboard = ({ copied, ...props }) => {
 	return (
