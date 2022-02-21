@@ -15,14 +15,17 @@ const Form = () => {
 	const handleSubmit = async event_ => {
 		event_.preventDefault();
 		console.log("Joining lobby..", value);
-		await pubnub.setState({
-			channels,
-			state: {
-				name: value,
-				isLeader: false,
-			},
-		});
-		setJoined(true);
+		pubnub.subscribe({ channels, withPresence: true });
+		setTimeout(async () => {
+			await pubnub.setState({
+				channels,
+				state: {
+					name: value,
+					isLeader: false,
+				},
+			});
+			setJoined(true);
+		}, 3_000);
 	};
 
 	return (

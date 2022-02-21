@@ -23,10 +23,11 @@ const Page = () => {
 	/* Callbacks */
 
 	const handlePresence = useCallback(event_ => {
-		const { addPlayer, removePlayer } = useStore.getState();
+		const { addPlayer, removePlayer, updatePlayer } = useStore.getState();
 		switch (event_.action) {
 			case "join":
 				console.log("Join", event_);
+				addPlayer({ name: "Guest", id: event_.uuid });
 				break;
 			case "leave":
 				console.log("Leave", event_);
@@ -34,7 +35,7 @@ const Page = () => {
 				break;
 			case "state-change":
 				console.log("state-change", event_);
-				addPlayer({ name: event_.state?.name, id: event_.uuid });
+				updatePlayer(event_.uuid, { name: event_.state.name });
 				break;
 			default:
 				break;
@@ -51,10 +52,8 @@ const Page = () => {
 	useEffect(() => {
 		const listeners = { presence: handlePresence };
 		pubnub.addListener(listeners);
-		pubnub.subscribe({ channels, withPresence: true });
 
 		return () => {
-			pubnub.unsubscribe({ channels });
 			pubnub.removeListener(listeners);
 		};
 	}, [pubnub, channels, handlePresence]);

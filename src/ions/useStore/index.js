@@ -38,6 +38,23 @@ const useStore = create(set => {
 				})
 			);
 		},
+		updatePlayer: (uuid, partial) => {
+			console.log("-> 1 ", uuid, partial);
+			set(
+				produce(draft => {
+					const index = draft.players.findIndex(player => uuid === player.id);
+					console.log("-> 2", index);
+					if (index >= 0) {
+						console.log("-> 3", draft.players[index]);
+						draft.players[index] = {
+							...draft.players[index],
+							...partial,
+							id: uuid,
+						};
+					}
+				})
+			);
+		},
 	};
 });
 
