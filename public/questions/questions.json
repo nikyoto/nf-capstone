@@ -1,0 +1,52 @@
+{
+  "questions": [
+    {
+      "question": "Wer würde eher sein Bier auf Ex trinken?",
+      "id": "1"
+    },
+    {
+      "question": "Wer würde eher seine Haare komplett abrasieren?",
+      "id": "2"
+    },
+    {
+      "question": "Wer würde eher in der Wildnis überleben?",
+      "id": "3"
+    },
+    {
+      "question": "Wer würde eher den Geburtstag seiner Freunde vergessen?",
+      "id": "4"
+    },
+    {
+      "question": "Wer würde eher einen Marathon gewinnen?",
+      "id": "5"
+    },
+    {
+      "question": "Wer würde eher seine Haare rot färben?",
+      "id": "6"
+    },
+    {
+      "question": "Wer würde eher bei diesem Spiel lügen?",
+      "id": "7"
+    },
+    {
+      "question": "Wer würde eher ins Gefängnis kommen?",
+      "id": "8"
+    },
+    {
+      "question": "Wer würde eher seinen Job verlieren?",
+      "id": "9"
+    },
+    {
+      "question": "Wer würde eher einem Kind das Eis klauen?",
+      "id": "10"
+    },
+    {
+      "question": "Wer würde eher 3 Tage lang wach bleiben?",
+      "id": "11"
+    },
+    {
+      "question": "Wer würde eher ins Ausland ziehen?",
+      "id": "12"
+    }
+  ]
+}

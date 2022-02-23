@@ -2,7 +2,7 @@ import { usePubNub } from "pubnub-react";
 import { useCallback, useEffect } from "react";
 
 export const usePubnubSubscription = (channels, handleMessage) => {
-	const [mainChannel] = channels;
+	const [channel] = channels;
 	const pubnub = usePubNub();
 	useEffect(() => {
 		const listeners = { message: handleMessage };
@@ -16,13 +16,13 @@ export const usePubnubSubscription = (channels, handleMessage) => {
 	}, [pubnub, channels, handleMessage]);
 
 	const sendMessage = useCallback(
-		(message, channel = mainChannel) => {
+		message => {
 			if (message) {
 				return pubnub.publish({ channel, message });
 			}
 			return Promise.reject(new Error("Please provide a valid message."));
 		},
-		[pubnub, mainChannel]
+		[pubnub, channel]
 	);
 
 	return { pubnub, sendMessage };

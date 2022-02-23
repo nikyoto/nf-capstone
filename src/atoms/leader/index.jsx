@@ -1,7 +1,7 @@
 import React from "react";
-import { StyledStarContainer, StyledLeader, StyledLeaderName } from "./styled";
-import { StyledLeaderStar } from "../leader-star/styled";
 import Icon from "../icon";
+import { StyledLeaderStar } from "../leader-star/styled";
+import { StyledLeader, StyledLeaderName, StyledStarContainer } from "./styled";
 
 export const Leader = ({ children }) => {
 	return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { PseudoTextField } from "../../atoms/pseudo-textfield";
 import { CopyToClipboard } from "../../atoms/copy-to-clipboard";
-import { StyledCopyLink } from "./styled";
+import { PseudoTextField } from "../../atoms/pseudo-textfield";
 import { useCopyToClipboard } from "../../ions/hooks/copy-to-clipboard";
+import { StyledCopyLink } from "./styled";
 
 export const CopyLink = ({ value }) => {
 	const { copy } = useCopyToClipboard();
