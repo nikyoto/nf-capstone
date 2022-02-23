@@ -6,6 +6,7 @@ import { SmallLogo } from "../../../../molecules/small-logo";
 
 const Page = () => {
 	const players = useStore(state => state.players);
+
 	return (
 		<div>
 			<SmallLogo />

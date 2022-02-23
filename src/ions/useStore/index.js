@@ -9,6 +9,12 @@ const useStore = create(set => {
 				joined,
 			}));
 		},
+		currentQuestion: "",
+		setCurrentQuestion: currentQuestion => {
+			set(() => ({
+				currentQuestion,
+			}));
+		},
 		channels: [],
 		setChannels: channels => {
 			set({
