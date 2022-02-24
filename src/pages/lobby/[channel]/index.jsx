@@ -3,6 +3,7 @@ import { usePubNub } from "pubnub-react";
 import React, { useCallback, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import Button from "../../../atoms/button";
+import { randomQuestion } from "../../../ions/randomQuestion/randomQuestion";
 import { StyledFieldset } from "../../../ions/styles";
 import useStore from "../../../ions/useStore";
 import { CopyLink } from "../../../molecules/copy-link";
@@ -99,6 +100,7 @@ const Page = () => {
 							void push({
 								pathname: `/lobby/${uuid()}/question`,
 							});
+							void randomQuestion();
 						}}
 					>
 						Start Game

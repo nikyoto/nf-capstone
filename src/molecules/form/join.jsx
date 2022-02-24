@@ -24,8 +24,8 @@ const Form = () => {
 					isLeader: false,
 				},
 			});
-			setJoined(true);
 		}, 3_000);
+		setJoined(true);
 	};
 
 	return (
@@ -34,10 +34,12 @@ const Form = () => {
 			<form onSubmit={handleSubmit}>
 				<StyledFieldset>
 					<Input
+						required
 						type="text"
 						value={value}
 						placeholder="Enter your name"
 						aria-label="name"
+						minLength="3"
 						maxLength="12"
 						onChange={event_ => {
 							setValue(event_.target.value);
