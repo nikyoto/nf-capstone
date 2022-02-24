@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import { StyledAppBackground } from "../ions/styles";
 import { ExtendedLogo } from "../molecules/extended-logo";
-import Form from "../molecules/form";
+import Form from "../molecules/form/index";
 import Layout from "../organisms/layout";
 
 const Page = () => {
