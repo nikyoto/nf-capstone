@@ -9,7 +9,7 @@
 
 Hoo!? is a multiplayer party app which you can play with your friends to find out
 who would rather do a random exciting task.
-I used a huge variety of tools which you can find down below.
+I used a variety of tools which you can find down below.
 
 The majority had to be done with PubNub which let me connect multiple devices together.
 I needed that in case to create a lobby for multiple players.
