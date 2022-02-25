@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { usePubNub } from "pubnub-react";
 import React, { useCallback, useEffect } from "react";
-import { v4 as uuid } from "uuid";
 import Button from "../../../atoms/button";
 import { randomQuestion } from "../../../ions/randomQuestion/randomQuestion";
 import { StyledFieldset } from "../../../ions/styles";
@@ -9,16 +8,20 @@ import useStore from "../../../ions/useStore";
 import { CopyLink } from "../../../molecules/copy-link";
 import Form from "../../../molecules/form/join";
 import { PlayerOverview } from "../../../molecules/player-overview";
+import { PlayerVote } from "../../../molecules/player-vote";
+import { QuestionCard } from "../../../molecules/question-card";
 import { SmallLogo } from "../../../molecules/small-logo";
 
 const Page = () => {
 	const {
 		query: { channel },
-		push,
 	} = useRouter();
 	const channels = useStore(state => state.channels);
 	const joined = useStore(state => state.joined);
 	const setJoined = useStore(state => state.setJoined);
+	const players = useStore(state => state.players);
+	const started = useStore(state => state.started);
+	const setStarted = useStore(state => state.setStarted);
 	const pubnub = usePubNub();
 
 	/* Callbacks */
@@ -47,7 +50,9 @@ const Page = () => {
 
 	useEffect(() => {
 		const { setChannels } = useStore.getState();
+		const { setStarted } = useStore.getState();
 		setChannels([channel]);
+		setStarted(false);
 	}, [channel]);
 
 	useEffect(() => {
@@ -79,6 +84,16 @@ const Page = () => {
 		}
 	}, [pubnub, channels]);
 
+	if (started) {
+		return (
+			<div>
+				<SmallLogo />
+				<QuestionCard />
+				<PlayerVote players={players} />
+			</div>
+		);
+	}
+
 	if (joined) {
 		return (
 			<>
@@ -97,9 +112,7 @@ const Page = () => {
 					</Button>
 					<Button
 						onClick={() => {
-							void push({
-								pathname: `/lobby/${uuid()}/question`,
-							});
+							setStarted(true);
 							void randomQuestion();
 						}}
 					>

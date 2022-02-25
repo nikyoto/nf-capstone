@@ -9,6 +9,18 @@ const useStore = create(set => {
 				joined,
 			}));
 		},
+		started: false,
+		setStarted: started => {
+			set(() => ({
+				started,
+			}));
+		},
+		voted: false,
+		setVoted: voted => {
+			set(() => ({
+				voted,
+			}));
+		},
 		currentQuestion: "",
 		setCurrentQuestion: currentQuestion => {
 			set(() => ({

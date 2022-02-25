@@ -1,30 +1,57 @@
-# Next App
+# 🦉 Hoo!? - Who would rather?
 
-This is a template for a Next.js app.
+> Hoo!? is a multiplayer party app which you can play with your friends to find out who would rather do a random exciting task.
 
-It uses the following tools/libraries:
+## Description
 
-* [Storybook](https://storybook.js.org/)
-* [Cypress](https://cypress.io/)
-* [Jest](https://jestjs.io/)
-* [Commitlint](https://commitlint.js.org/)
-* [Stylelint](https://stylelint.io/)
-* [Eslint](https://eslint.org/)
-* [Prettier](https://prettier.io/)
+**This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
+<img align="right" width="200" alt="Screenshot 2022-02-25 at 11 24 33" src="https://user-images.githubusercontent.com/75721284/155730466-87a3da34-a4bf-4c5b-9b0e-068bb53e94d9.png">
+
+Hoo!? is a multiplayer party app which you can play with your friends to find out
+who would rather do a random exciting task.
+I used a huge variety of tools which you can find down below.
+
+The majority had to be done with PubNub which let me connect multiple devices together.
+I needed that in case to create a lobby for multiple players.
+
+However it's not done completely, as it still has some errors when trying to
+connect all players to the question page. I'll update the README, once it's done!
+
+## Demo
+
+You can find a demo of the app deployed on vercel: https://nf-capstone-three.vercel.app/
+
+## Video
+
+https://user-images.githubusercontent.com/75721284/155729852-2c0d7de5-71df-4b14-8d29-3c7e19f6660f.mp4
+
+## Tech Stack
+
+- React
+- Next.js
+- PubNub
+- zustand
+- immer
+- axios
+- Vercel
+- Express
+
 
 ## Getting started
 
-**Run the development server:**
+- Clone this repository
 
-```bash
-npm run dev
-```
 
-**Run storybook:**
+- Use `.env.example` to create your own `.env` inside the root folder
 
-```shell
-npm run storybook
-```
+
+- Put in the following keys from [PubNub](https://admin.pubnub.com): NEXT_PUBLIC_PUBNUB_PUBLISH_KEY, NEXT_PUBLIC_PUBNUB_SUBSCRIBE_KEY
+
+
+- Inside root folder install all dependencies via `$ npm install`
+
+
+- Run app in development mode via `$ npm run dev`
 
 
 ## Atomic design
@@ -60,18 +87,6 @@ npm run dev
 
 ```shell
 npm run build
-```
-
-**Run storybook:**
-
-```shell
-npm run storybook
-```
-
-**Build storybook:**
-
-```shell
-npm run storybook:build
 ```
 
 **Run e2e tests:**
