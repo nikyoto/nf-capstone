@@ -28,6 +28,7 @@ const Page = () => {
 
 	const handlePresence = useCallback(event_ => {
 		const { addPlayer, removePlayer, updatePlayer } = useStore.getState();
+		console.log(event_.action, "DANWDIOAWHDOAWH");
 		switch (event_.action) {
 			case "join":
 				console.log("Join", event_);
@@ -39,7 +40,10 @@ const Page = () => {
 				break;
 			case "state-change":
 				console.log("state-change", event_);
-				updatePlayer(event_.uuid, { name: event_.state.name });
+				updatePlayer(event_.uuid, {
+					name: event_.state.name,
+					isLeader: event_.state.isLeader,
+				});
 				break;
 			default:
 				break;
@@ -92,9 +96,7 @@ const Page = () => {
 				<PlayerVote players={players} />
 			</div>
 		);
-	}
-
-	if (joined) {
+	} else if (joined) {
 		return (
 			<>
 				<SmallLogo />

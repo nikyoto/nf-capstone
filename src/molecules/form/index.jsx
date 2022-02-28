@@ -25,7 +25,7 @@ const Form = () => {
 
 	const handleSubmit = async event_ => {
 		event_.preventDefault();
-		console.log("Joining lobby..", value);
+		console.log("Creating lobby..", value);
 		void push({
 			pathname: `/lobby/${[channels]}`,
 		});
@@ -36,7 +36,7 @@ const Form = () => {
 				channels,
 				state: {
 					name: value,
-					isLeader: false,
+					isLeader: true,
 				},
 			});
 		}, 3_000);
