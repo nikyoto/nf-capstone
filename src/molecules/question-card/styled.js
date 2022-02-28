@@ -20,3 +20,7 @@ export const StyledQuestionCardContainer = styled.div`
 	display: flex;
 	justify-content: center;
 `;
+
+export const StyledCountdown = styled.div`
+	color: #212121;
+`;

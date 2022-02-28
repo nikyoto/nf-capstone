@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { usePubNub } from "pubnub-react";
 import React, { useCallback, useEffect } from "react";
 import Button from "../../../atoms/button";
+import { RoundNumber } from "../../../atoms/round-number";
 import { randomQuestion } from "../../../ions/randomQuestion/randomQuestion";
 import { StyledFieldset } from "../../../ions/styles";
 import useStore from "../../../ions/useStore";
@@ -28,7 +29,6 @@ const Page = () => {
 
 	const handlePresence = useCallback(event_ => {
 		const { addPlayer, removePlayer, updatePlayer } = useStore.getState();
-		console.log(event_.action, "DANWDIOAWHDOAWH");
 		switch (event_.action) {
 			case "join":
 				console.log("Join", event_);
@@ -92,6 +92,7 @@ const Page = () => {
 		return (
 			<div>
 				<SmallLogo />
+				<RoundNumber />
 				<QuestionCard />
 				<PlayerVote players={players} />
 			</div>

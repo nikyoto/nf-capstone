@@ -9,6 +9,18 @@ const useStore = create(set => {
 				joined,
 			}));
 		},
+		countdown: 30,
+		setCountdown: countdown => {
+			set(() => ({
+				countdown,
+			}));
+		},
+		round: 1,
+		setRound: round => {
+			set(() => ({
+				round,
+			}));
+		},
 		started: false,
 		setStarted: started => {
 			set(() => ({
@@ -19,6 +31,12 @@ const useStore = create(set => {
 		setVoted: voted => {
 			set(() => ({
 				voted,
+			}));
+		},
+		fillValue: 0,
+		setFillValue: fillValue => {
+			set(() => ({
+				fillValue,
 			}));
 		},
 		currentQuestion: "",

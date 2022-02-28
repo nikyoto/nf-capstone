@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { PlayerButton } from "../../atoms/player-button";
-import useStore from "../../ions/useStore";
 import { StyledPlayerVote } from "./styled";
 
 export const PlayerVote = ({ players }) => {
